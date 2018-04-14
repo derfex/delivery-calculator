@@ -1,0 +1,43 @@
+<!doctype HTML>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Калькулятор доставки</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto&amp;subset=cyrillic,cyrillic-ext" rel="stylesheet">
+    <link rel="stylesheet" href="resource/s.css">
+</head>
+<body>
+    <form name="deliveryCalculator" class="calc-wrapper">
+        <h1>Калькулятор доставки <span style="font-size:smaller">(стоимость является примерной)</span></h1>
+        <div class="calc-UI__blockL">
+            <div class="calc-UI__row">
+                <label class="calc-UI__label" for="production">Продукция</label>
+                <select id="production" name="production" class="calc-UI__input">
+                    <option value="0">Загрузка данных…</option>
+                </select>
+            </div>
+            <div class="calc-UI__row">
+                <label class="calc-UI__label" for="weight">Вес, кг</label>
+                <input class="calc-UI__input" type="number"
+                    id="weight" name="weight" min="0" max="1000000" step="1" value="100"
+                />
+            </div>
+            <div class="calc-UI__row">
+                <label class="calc-UI__label" for="place">Куда</label>
+                <select id="place" name="place" class="calc-UI__input">
+                    <option value="0">Загрузка данных…</option>
+                </select>
+            </div>
+            <button class="calc-UI__submit">РАССЧИТАТЬ</button>
+        </div>
+        <div class="calc-UI__blockR">
+            <div class="calc-UI__result-box">
+                <div id="result" style="display:none"></div>
+            </div>
+        </div>
+    </form>
+    <div>
+        <script src="resource/app.js"></script>
+    </div>
+</body>
+</html>
