@@ -1,24 +1,24 @@
 'use strict';
 var PRODUCTION = [
-    { caption: 'Картофель отборный'                         ,  price: 23.00,  image: 'potato-01.jpg' },
-    { caption: 'Картофель свежий'                           ,  price: 13.00,  image: 'potato-02.jpg' },
-    { caption: 'Картофель мелкая фракция'                   ,  price: 10.50,  image: 'potato-02.jpg' },
-    { caption: 'Картофель семенной «Коломбо»'               ,  price: 24.00,  image: 'potato-02.jpg' },
-    { caption: 'Картофель семенной «Ред Скарлет»'           ,  price: 21.00,  image: 'potato-02.jpg' },
-    { caption: 'Картофель семенной «Гала»'                  ,  price: 12.00,  image: 'potato-02.jpg' },
-    { caption: 'Картофель семенной «Рамос»'                 ,  price: 20.00,  image: 'potato-02.jpg' },
-    { caption: 'Морковь (эконом)'                           ,  price:  5.20,  image: 'potato-02.jpg' },
-    { caption: 'Свекла отборная'                            ,  price: 14.50,  image: 'potato-02.jpg' },
-    { caption: 'Свекла'                                     ,  price:  9.50,  image: 'potato-02.jpg' },
-    { caption: 'Свекла 35+'                                 ,  price:  5.00,  image: 'potato-02.jpg' },
-    { caption: 'Пшеница'                                    ,  price: 10.00,  image: 'potato-02.jpg' },
-    { caption: 'Овёс (до 5 т.)'                             ,  price: 10.00,  image: 'potato-02.jpg' },
-    { caption: 'Овёс (свыше 5 т.)'                          ,  price:  9.00,  image: 'potato-02.jpg' },
-    { caption: 'Овсяно-пшеничная смесь'                     ,  price: 11.00,  image: 'potato-02.jpg' },
-    { caption: 'Горчица'                                    ,  price: 40.00,  image: 'potato-02.jpg' },
-    { caption: 'Кормовая смесь (картофель, свекла)'         ,  price:  3.00,  image: 'potato-02.jpg' },
-    { caption: 'Кормовая смесь в сетке (картофель, свекла)' ,  price:  5.00,  image: 'potato-02.jpg' },
-    { caption: 'Кормовая смесь (морковь)'                   ,  price:  3.50,  image: 'potato-02.jpg' }
+    { caption: 'Картофель отборный'                         ,  price: 23.00,  image: 'potato-01.jpg'            },
+    { caption: 'Картофель свежий'                           ,  price: 13.00,  image: 'potato-02.jpg'            },
+    { caption: 'Картофель мелкая фракция'                   ,  price: 10.50,  image: 'potato-03.jpg'            },
+    { caption: 'Картофель семенной «Коломбо»'               ,  price: 24.00,  image: 'potato-04.jpg'            },
+    { caption: 'Картофель семенной «Ред Скарлет»'           ,  price: 21.00,  image: 'potato-05.jpg'            },
+    { caption: 'Картофель семенной «Гала»'                  ,  price: 12.00,  image: 'potato-06.jpg'            },
+    { caption: 'Картофель семенной «Рамос»'                 ,  price: 20.00,  image: 'potato-07.jpg'            },
+    { caption: 'Морковь (эконом)'                           ,  price:  5.20,  image: 'carrot-01.jpg'            },
+    { caption: 'Свекла отборная'                            ,  price: 14.50,  image: 'beet-01.jpg'              },
+    { caption: 'Свекла'                                     ,  price:  9.50,  image: 'beet-02.jpg'              },
+    { caption: 'Свекла 35+'                                 ,  price:  5.00,  image: 'beet-03.jpg'              },
+    { caption: 'Пшеница'                                    ,  price: 10.00,  image: 'wheat-01.jpg'             },
+    { caption: 'Овёс (до 5 т.)'                             ,  price: 10.00,  image: 'oat-01.jpg'               },
+    { caption: 'Овёс (свыше 5 т.)'                          ,  price:  9.00,  image: 'oat-01.jpg'               },
+    { caption: 'Овсяно-пшеничная смесь'                     ,  price: 11.00,  image: 'oat-wheat-mixture-01.jpg' },
+    { caption: 'Горчица'                                    ,  price: 40.00,  image: 'mustard-01.jpg'           },
+    { caption: 'Кормовая смесь (картофель, свекла)'         ,  price:  3.00,  image: 'fodder-mixture-01.jpg'    },
+    { caption: 'Кормовая смесь в сетке (картофель, свекла)' ,  price:  5.00,  image: 'fodder-mixture-01.jpg'    },
+    { caption: 'Кормовая смесь (морковь)'                   ,  price:  3.50,  image: 'fodder-mixture-02.jpg'    }
 ];
 var PRODUCTION_IMAGE_PREFIX_PATH = 'resource/image/production/450x300/';
 var PRODUCTION_PRICE_POSTFIX = ' ₽ за кг.';
