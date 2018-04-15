@@ -1,25 +1,27 @@
 'use strict';
 var PRODUCTION = [
-    { caption: 'Картофель отборный'                         ,  price : 23.00 },
-    { caption: 'Картофель свежий'                           ,  price : 13.00 },
-    { caption: 'Картофель мелкая фракция'                   ,  price : 10.50 },
-    { caption: 'Картофель семенной «Коломбо»'               ,  price : 24.00 },
-    { caption: 'Картофель семенной «Ред Скарлет»'           ,  price : 21.00 },
-    { caption: 'Картофель семенной «Гала»'                  ,  price : 12.00 },
-    { caption: 'Картофель семенной «Рамос»'                 ,  price : 20.00 },
-    { caption: 'Морковь (эконом)'                           ,  price :  5.20 },
-    { caption: 'Свекла отборная'                            ,  price : 14.50 },
-    { caption: 'Свекла'                                     ,  price :  9.50 },
-    { caption: 'Свекла 35+'                                 ,  price :  5.00 },
-    { caption: 'Пшеница'                                    ,  price : 10.00 },
-    { caption: 'Овёс (до 5 т.)'                             ,  price : 10.00 },
-    { caption: 'Овёс (свыше 5 т.)'                          ,  price :  9.00 },
-    { caption: 'Овсяно-пшеничная смесь'                     ,  price : 11.00 },
-    { caption: 'Горчица'                                    ,  price : 40.00 },
-    { caption: 'Кормовая смесь (картофель, свекла)'         ,  price :  3.00 },
-    { caption: 'Кормовая смесь в сетке (картофель, свекла)' ,  price :  5.00 },
-    { caption: 'Кормовая смесь (морковь)'                   ,  price :  3.50 }
+    { caption: 'Картофель отборный'                         ,  price: 23.00,  image: 'potato-01.jpg' },
+    { caption: 'Картофель свежий'                           ,  price: 13.00,  image: 'potato-02.jpg' },
+    { caption: 'Картофель мелкая фракция'                   ,  price: 10.50,  image: 'potato-02.jpg' },
+    { caption: 'Картофель семенной «Коломбо»'               ,  price: 24.00,  image: 'potato-02.jpg' },
+    { caption: 'Картофель семенной «Ред Скарлет»'           ,  price: 21.00,  image: 'potato-02.jpg' },
+    { caption: 'Картофель семенной «Гала»'                  ,  price: 12.00,  image: 'potato-02.jpg' },
+    { caption: 'Картофель семенной «Рамос»'                 ,  price: 20.00,  image: 'potato-02.jpg' },
+    { caption: 'Морковь (эконом)'                           ,  price:  5.20,  image: 'potato-02.jpg' },
+    { caption: 'Свекла отборная'                            ,  price: 14.50,  image: 'potato-02.jpg' },
+    { caption: 'Свекла'                                     ,  price:  9.50,  image: 'potato-02.jpg' },
+    { caption: 'Свекла 35+'                                 ,  price:  5.00,  image: 'potato-02.jpg' },
+    { caption: 'Пшеница'                                    ,  price: 10.00,  image: 'potato-02.jpg' },
+    { caption: 'Овёс (до 5 т.)'                             ,  price: 10.00,  image: 'potato-02.jpg' },
+    { caption: 'Овёс (свыше 5 т.)'                          ,  price:  9.00,  image: 'potato-02.jpg' },
+    { caption: 'Овсяно-пшеничная смесь'                     ,  price: 11.00,  image: 'potato-02.jpg' },
+    { caption: 'Горчица'                                    ,  price: 40.00,  image: 'potato-02.jpg' },
+    { caption: 'Кормовая смесь (картофель, свекла)'         ,  price:  3.00,  image: 'potato-02.jpg' },
+    { caption: 'Кормовая смесь в сетке (картофель, свекла)' ,  price:  5.00,  image: 'potato-02.jpg' },
+    { caption: 'Кормовая смесь (морковь)'                   ,  price:  3.50,  image: 'potato-02.jpg' }
 ];
+var PRODUCTION_IMAGE_PREFIX_PATH = 'resource/image/production/450x300/';
+var PRODUCTION_PRICE_POSTFIX = ' ₽ за кг.';
 var PLACE = [
     { caption: 'Лихославль'        ,   distance:   7,   costPerKM: { t20: 160.55, t5: 92.33, t1: 90.35 } },
     { caption: 'Тверь'             ,   distance:  60,   costPerKM: { t20:  39.63, t5: 25.22, t1: 23.24 } },
@@ -104,9 +106,21 @@ var PLACE = [
 var pProduction = document.getElementById('production');
 var productionOptionsHTML = '';
 PRODUCTION.forEach(function(product, i, array) {
-    productionOptionsHTML += '<option value="' + product.price + '">' + product.caption + '</option>\r\n';
+    productionOptionsHTML += '<option value="' + i + '">' + product.caption + '</option>\r\n';
 });
 pProduction.innerHTML = productionOptionsHTML;
+
+var pProductionInfo = document.getElementById('productionInfo');
+var pProductionInfo_img = pProductionInfo.children[0];
+var pProductionInfo_caption = pProductionInfo.children[1].children[0];
+var pProductionInfo_price   = pProductionInfo.children[1].children[1];
+pProduction.addEventListener('change', function(event) {
+    var dataProduction = PRODUCTION[parseInt(this.value, 10)];
+    pProductionInfo_img.setAttribute('src', PRODUCTION_IMAGE_PREFIX_PATH + dataProduction.image);
+    pProductionInfo_caption.setAttribute('title', dataProduction.caption);
+    pProductionInfo_caption.innerText = dataProduction.caption;
+    pProductionInfo_price.innerText = dataProduction.price + PRODUCTION_PRICE_POSTFIX;
+});
 
 
 var pWeight = document.getElementById('weight');
@@ -125,8 +139,8 @@ var pResult = document.getElementById('result');
 var pDeliveryCalculator = document.forms.deliveryCalculator;
 pDeliveryCalculator.addEventListener('submit', function(event) {
     event.preventDefault();
-    var price    = parseInt(pProduction.value, 10);
-    var weight   = parseInt(pWeight.value, 10);
+    var price = PRODUCTION[parseInt(pProduction.value, 10)].price;
+    var weight = parseInt(pWeight.value, 10);
 
     var dataPlace = PLACE[pPlace.value];
 
