@@ -8,31 +8,37 @@
 </head>
 <body>
     <form name="deliveryCalculator" class="calc-wrapper">
-        <h1>Калькулятор доставки <span style="font-size:smaller">(стоимость является примерной)</span></h1>
-        <div class="calc-UI__blockL">
-            <div class="calc-UI__row">
-                <label class="calc-UI__label" for="production">Продукция</label>
-                <select id="production" name="production" class="calc-UI__input">
-                    <option value="0">Загрузка данных…</option>
-                </select>
+        <h1>Калькулятор доставки <span>(стоимость является примерной)</span></h1>
+        <div class="calc-flexbox calc-flexbox__JC--space-between calc-flexbox__FW--wrap">
+            <div class="calc-UI__block">
+                <div class="calc-UI__row">
+                    <label class="calc-UI__label" for="production">Продукция</label>
+                    <select id="production" name="production" class="calc-UI__input">
+                        <option value="0">Загрузка данных…</option>
+                    </select>
+                    <figure id="productionInfo" class="calc-UI__figure">
+                        <img src="resource/image/production/450x300/potato-01.jpg" alt="Картофель отборный">
+                        <figcaption class="calc-UI__figcapture calc-flexbox calc-flexbox__JC--space-between"><span class="calc-UI__production-caption calc-ellipsis" title="Картофель отборный">Картофель отборный</span><span class="calc-UI__production-price calc-ellipsis">23.00 ₽ за кг.</span></figcaption>
+                    </figure>
+                </div>
+                <div class="calc-UI__row">
+                    <label class="calc-UI__label" for="weight">Вес, кг</label>
+                    <input class="calc-UI__input" type="number"
+                        id="weight" name="weight" min="0" max="1000000" step="1" value="100"
+                    />
+                </div>
+                <div class="calc-UI__row">
+                    <label class="calc-UI__label" for="place">Куда</label>
+                    <select id="place" name="place" class="calc-UI__input">
+                        <option value="0">Загрузка данных…</option>
+                    </select>
+                </div>
+                <button class="calc-UI__submit">РАССЧИТАТЬ</button>
             </div>
-            <div class="calc-UI__row">
-                <label class="calc-UI__label" for="weight">Вес, кг</label>
-                <input class="calc-UI__input" type="number"
-                    id="weight" name="weight" min="0" max="1000000" step="1" value="100"
-                />
-            </div>
-            <div class="calc-UI__row">
-                <label class="calc-UI__label" for="place">Куда</label>
-                <select id="place" name="place" class="calc-UI__input">
-                    <option value="0">Загрузка данных…</option>
-                </select>
-            </div>
-            <button class="calc-UI__submit">РАССЧИТАТЬ</button>
-        </div>
-        <div class="calc-UI__blockR">
-            <div class="calc-UI__result-box">
-                <div id="result" style="display:none"></div>
+            <div class="calc-UI__block">
+                <div class="calc-UI__result-box">
+                    <div id="result" style="display:none"></div>
+                </div>
             </div>
         </div>
     </form>

@@ -1,35 +1,52 @@
 html{font-size:10px;font-family:'Roboto', sans-serif}
 html,body{height:100%}
 body{margin:0}
+.calc-flexbox{display:flex}
+.calc-flexbox__JC--space-between{justify-content:space-between}
+.calc-flexbox__FW--wrap{flex-wrap:wrap}
+.calc-ellipsis{text-overflow:ellipsis;white-space:nowrap;overflow:hidden}
 .calc-wrapper{
-    width:calc(100% - 2.6em);height:calc(100% - 2.6em);
-    border:.3em solid #ddd;
+    min-width:28em;
+    max-width:94em;
     padding:1em;
 }
 .calc-wrapper:before,.calc-wrapper:after{content:'';display:table}
 .calc-wrapper:after{clear:both}
 h1{color:#5e731e}
-.calc-UI__blockL,.calc-UI__blockR{float:left;height:23em}
-.calc-UI__blockL{width:52em}
-.calc-UI__blockR{width:30em;padding-left:3em}
+h1 span{font-size:smaller;display:inline-block}
+.calc-UI__block{width:45em}
 
 .calc-UI__label,
 .calc-UI__input{
     font-size:1.5em;
-    height:2.5em;
-    display:inline-block;
+    display:block;
 }
 .calc-UI__label{
-    width:7.5em;
+    padding:.2em .9em;
     color:#5e731e;
 }
 .calc-UI__input{
     border:1px solid #5e731e;
     padding:0 0.5em;
-    width:27em;
+    width:100%;
+    height:2.5em;
     font-family:'Roboto', sans-serif;
 }
-input.calc-UI__input{width:25.8em}
+input.calc-UI__input{box-sizing:border-box}
+.calc-UI__figure{
+    position:relative;
+    margin:1em 0;
+    width:45em;height:30em;
+}
+.calc-UI__figcapture{
+    position:absolute;left:0;right:0;bottom:0;
+    padding:1em;
+    background-image:linear-gradient(rgba(0,0,0,0), rgba(0,0,0,1));
+    color:#fff;
+}
+.calc-UI__figcapture span{font-size:1.5em}
+.calc-UI__production-caption{flex:1 1 auto}
+.calc-UI__production-price{flex:1 0 7em;text-align:right}
 .calc-UI__submit{
     border:1px solid #e9b600;border-radius:3px;
     padding:6px 20px;
@@ -47,9 +64,9 @@ input.calc-UI__input{width:25.8em}
 .calc-UI__row{margin:1em 0}
 
 .calc-UI__result-box{
-    margin-top:1em;
+    margin-top:3.5em;
     padding:.1em 1em;
-    height:20.5em;
+    height:54em;
     background:#efffe2;
 }
 #result{font-size:1.5em}
