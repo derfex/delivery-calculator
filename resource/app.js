@@ -27,7 +27,6 @@ var PLACE = [
     { caption: 'Тверь'             ,   distance:  60,   costPerKM: { t20:  39.63, t5: 25.22, t1: 23.24 } },
     { caption: 'Москва'            ,   distance: 228,   costPerKM: { t20:  27.86, t5: 18.69, t1:  null } },
     { caption: 'Санкт-Петербург'   ,   distance: 532,   costPerKM: { t20:  26.19, t5:  null, t1:  null } },
-    { caption: '—' },
     { caption: 'Арзамас'           ,   distance: 695,   costPerKM: { t20:  25.59, t5:  null, t1:  null } },
     { caption: 'Балашиха'          ,   distance: 248,   costPerKM: { t20:  27.52, t5: 18.50, t1:  null } },
     { caption: 'Белгород'          ,   distance: 898,   costPerKM: { t20:  25.59, t5:  null, t1:  null } },
@@ -130,7 +129,9 @@ var pPlace = document.getElementById('place');
 var placeOptionsHTML = '';
 PLACE.forEach(function(place, i, array) {
     placeOptionsHTML += '<option value="' + i + '">' + place.caption + '</option>\r\n';
+    if (i === 3) placeOptionsHTML += '<optgroup label="Ещё">\r\n';
 });
+placeOptionsHTML += '</optgroup>\r\n';
 pPlace.innerHTML = placeOptionsHTML;
 
 
