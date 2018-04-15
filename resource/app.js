@@ -116,6 +116,7 @@ var pProductionInfo_price   = pProductionInfo.children[1].children[1];
 pProduction.addEventListener('change', function(event) {
     var dataProduction = PRODUCTION[parseInt(this.value, 10)];
     pProductionInfo_img.setAttribute('src', PRODUCTION_IMAGE_PREFIX_PATH + dataProduction.image);
+    pProductionInfo_img.setAttribute('alt', dataProduction.caption);
     pProductionInfo_caption.setAttribute('title', dataProduction.caption);
     pProductionInfo_caption.innerText = dataProduction.caption;
     pProductionInfo_price.innerText = dataProduction.price + PRODUCTION_PRICE_POSTFIX;
