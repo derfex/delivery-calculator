@@ -46,7 +46,7 @@ input.calc-UI__input{box-sizing:border-box}
 }
 .calc-UI__figcapture span{font-size:1.5em}
 .calc-UI__production-caption{flex:1 1 auto}
-.calc-UI__production-price{flex:1 0 7em;text-align:right}
+.calc-UI__production-price{flex:1 0 10em;text-align:right}
 .calc-UI__submit{
     border:1px solid #e9b600;border-radius:3px;
     padding:6px 20px;
