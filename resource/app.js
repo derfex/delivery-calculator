@@ -7,34 +7,48 @@
     function _getClass(obj) { return Object.prototype.toString.call(obj).slice(8, -1); }
     // Проверить [[Class]] переменной:
     function _is(type, obj) { return obj !== undefined && obj !== null && _getClass(obj) === type; }
-    // ## Продукция ##
-    var PRODUCTION_PRICE_POSTFIX = ' ₽ за кг.';
-    var _getOatPrice = _clctn();
-    _getOatPrice.value = function(weight) { return weight < 5000 ? 10.00 : 9.00; };
-    _getOatPrice.info = function() { return '10.00' + PRODUCTION_PRICE_POSTFIX + '; от 5 тонн — 9.00' + PRODUCTION_PRICE_POSTFIX; };
-    var PRODUCTION = [
-        { caption: 'Картофель отборный'                         ,  price: 23.00,         image: 'potato-01.jpg'            },
-        { caption: 'Картофель свежий'                           ,  price: 13.00,         image: 'potato-02.jpg'            },
-        { caption: 'Картофель мелкая фракция'                   ,  price: 10.50,         image: 'potato-03.jpg'            },
-        { caption: 'Картофель семенной «Коломбо»'               ,  price: 24.00,         image: 'potato-04.jpg'            },
-        { caption: 'Картофель семенной «Ред Скарлет»'           ,  price: 21.00,         image: 'potato-05.jpg'            },
-        { caption: 'Картофель семенной «Гала»'                  ,  price: 12.00,         image: 'potato-06.jpg'            },
-        { caption: 'Картофель семенной «Рамос»'                 ,  price: 20.00,         image: 'potato-07.jpg'            },
-        { caption: 'Морковь (эконом)'                           ,  price:  5.20,         image: 'carrot-01.jpg'            },
-        { caption: 'Свекла отборная'                            ,  price: 14.50,         image: 'beet-01.jpg'              },
-        { caption: 'Свекла'                                     ,  price:  9.50,         image: 'beet-02.jpg'              },
-        { caption: 'Свекла 35+'                                 ,  price:  5.00,         image: 'beet-03.jpg'              },
-        { caption: 'Пшеница'                                    ,  price: 10.00,         image: 'wheat-01.jpg'             },
-        { caption: 'Овёс'                                       ,  price: _getOatPrice,  image: 'oat-01.jpg'               },
-        { caption: 'Овсяно-пшеничная смесь'                     ,  price: 11.00,         image: 'oat-wheat-mixture-01.jpg' },
-        { caption: 'Горчица'                                    ,  price: 40.00,         image: 'mustard-01.jpg'           },
-        { caption: 'Кормовая смесь (картофель, свекла)'         ,  price:  3.00,         image: 'fodder-mixture-01.jpg'    },
-        { caption: 'Кормовая смесь в сетке (картофель, свекла)' ,  price:  5.00,         image: 'fodder-mixture-01.jpg'    },
-        { caption: 'Кормовая смесь (морковь)'                   ,  price:  3.50,         image: 'fodder-mixture-02.jpg'    }
+
+    // ## Данные ##
+    var data = _clctn();
+
+    // ### Продукция ###
+    data.production = {
+        IMAGE_PREFIX_PATH: 'resource/image/production/450x300/',
+        PRICE_POSTFIX: ' ₽ за кг.',
+        _getOatPrice: _clctn(),
+    };
+    data.production._getOatPrice.value = function(weight) {
+        return weight < 5000 ? 10.00 : 9.00;
+    };
+    data.production._getOatPrice.info = function() {
+        return '10.00' + this.PRICE_POSTFIX + '; от 5 тонн — 9.00' + this.PRICE_POSTFIX;
+    }.bind(data.production);
+    // Список товаров:
+    data.production.LIST = [
+        { caption: 'Картофель отборный'                         ,  image: 'potato-01.jpg'            ,  price: 23.00 },
+        { caption: 'Картофель свежий'                           ,  image: 'potato-02.jpg'            ,  price: 13.00 },
+        { caption: 'Картофель мелкая фракция'                   ,  image: 'potato-03.jpg'            ,  price: 10.50 },
+        { caption: 'Картофель семенной «Коломбо»'               ,  image: 'potato-04.jpg'            ,  price: 24.00 },
+        { caption: 'Картофель семенной «Ред Скарлет»'           ,  image: 'potato-05.jpg'            ,  price: 21.00 },
+        { caption: 'Картофель семенной «Гала»'                  ,  image: 'potato-06.jpg'            ,  price: 12.00 },
+        { caption: 'Картофель семенной «Рамос»'                 ,  image: 'potato-07.jpg'            ,  price: 20.00 },
+        { caption: 'Морковь (эконом)'                           ,  image: 'carrot-01.jpg'            ,  price:  5.20 },
+        { caption: 'Свекла отборная'                            ,  image: 'beet-01.jpg'              ,  price: 14.50 },
+        { caption: 'Свекла'                                     ,  image: 'beet-02.jpg'              ,  price:  9.50 },
+        { caption: 'Свекла 35+'                                 ,  image: 'beet-03.jpg'              ,  price:  5.00 },
+        { caption: 'Пшеница'                                    ,  image: 'wheat-01.jpg'             ,  price: 10.00 },
+        { caption: 'Овёс'                                       ,  image: 'oat-01.jpg'               ,  price: data.production._getOatPrice },
+        { caption: 'Овсяно-пшеничная смесь'                     ,  image: 'oat-wheat-mixture-01.jpg' ,  price: 11.00 },
+        { caption: 'Горчица'                                    ,  image: 'mustard-01.jpg'           ,  price: 40.00 },
+        { caption: 'Кормовая смесь (картофель, свекла)'         ,  image: 'fodder-mixture-01.jpg'    ,  price:  3.00 },
+        { caption: 'Кормовая смесь в сетке (картофель, свекла)' ,  image: 'fodder-mixture-01.jpg'    ,  price:  5.00 },
+        { caption: 'Кормовая смесь (морковь)'                   ,  image: 'fodder-mixture-02.jpg'    ,  price:  3.50 }
     ];
-    var PRODUCTION_IMAGE_PREFIX_PATH = 'resource/image/production/450x300/';
-    // ## Места ##
-    var PLACE = [
+
+    // ### Места назначения ###
+    data.destination = _clctn();
+    // Список мест назначения:
+    data.destination.LIST = [
         { caption: 'Лихославль'        ,   distance:   7,   costPerKM: { t20: 160.55, t5: 92.33, t1: 90.35 } },
         { caption: 'Тверь'             ,   distance:  60,   costPerKM: { t20:  39.63, t5: 25.22, t1: 23.24 } },
         { caption: 'Москва'            ,   distance: 228,   costPerKM: { t20:  27.86, t5: 18.69, t1:  null } },
@@ -112,88 +126,161 @@
         { caption: 'Ярославль'         ,   distance: 358,   costPerKM: { t20:  26.33, t5: 17.84, t1:  null } }
     ];
 
+    // ## Обработчики ##
+    var handler = _clctn();
 
+    // ### Продукция ###
+    handler.production = {
+        field: {
+            p: d.getElementById('production'),
+        },
+        info: {
+            pBox: d.getElementById('productionInfo'),
+        },
+    };
+    // Инициализация поля выбора:
+    handler.production.field.init = function() {
+        var productionOptionsHTML = '';
+        data.production.LIST.forEach(function(product, i) {
+            productionOptionsHTML += '<option value="' + i + '">' + product.caption + '</option>\r\n';
+        });
+        this.p.innerHTML = productionOptionsHTML;
+    }.bind(handler.production.field);
+    // Инициализация информации о продукции:
+    handler.production.info.init = function() {
+        this.pImage = this.pBox.children[0];
+        this.pCaption = this.pBox.children[1].children[0];
+        this.pPrice = this.pBox.children[1].children[1];
+    }.bind(handler.production.info);
+    // Инициализация интерфейса продукции:
+    handler.production.init = function() {
+        this.field.init();
+        this.info.init();
+        this.getValueIndex = function() {
+            return parseInt(this.field.p.value, 10);
+        }.bind(this);
+        this.getData = function() {
+            var dataProduction = data.production.LIST[this.getValueIndex()];
+            dataProduction.image = data.production.IMAGE_PREFIX_PATH + dataProduction.image;
+            return dataProduction;
+        }.bind(this);
+        this.getData.priceInfo = function() {
+            var price = this.getData().price;
+            return !_is('Object', price)
+                ? price + data.production.PRICE_POSTFIX
+                : price.info();
+        }.bind(this);
+        this.getData.priceValue = function(weight) {
+            var price = this.getData().price;
+            return !_is('Object', price)
+                ? price
+                : price.value(weight);
+        }.bind(this);
+        this.field.p.addEventListener('change', function() {
+            var dataProduction = this.getData();
+            this.info.pImage.setAttribute('src', dataProduction.image);
+            this.info.pImage.setAttribute('alt', dataProduction.caption);
+            this.info.pCaption.setAttribute('title', dataProduction.caption);
+            this.info.pCaption.innerText = dataProduction.caption;
+            this.info.pPrice.innerText = this.getData.priceInfo();
+        }.bind(this));
+    }.bind(handler.production);
+    handler.production.init();
+    // ### Масса груза ###
+    handler.weight = {
+        field: {
+            p: d.getElementById('weight'),
+        }
+    };
+    handler.weight.getValue = function() {
+        return parseInt(this.field.p.value, 10);
+    }.bind(handler.weight);
 
-    var pProduction = d.getElementById('production');
-    var productionOptionsHTML = '';
-    PRODUCTION.forEach(function(product, i, array) {
-        productionOptionsHTML += '<option value="' + i + '">' + product.caption + '</option>\r\n';
-    });
-    pProduction.innerHTML = productionOptionsHTML;
+    // ### Места назначения ###
+    handler.destination = {
+        field: {
+            p: d.getElementById('destination'),
+        }
+    };
+    // Инициализация поля выбора:
+    handler.destination.field.init = function() {
+        var destinationOptionsHTML = '';
+        data.destination.LIST.forEach(function(destination, i) {
+            destinationOptionsHTML += '<option value="' + i + '">' + destination.caption + '</option>\r\n';
+            if (i === 3) destinationOptionsHTML += '<optgroup label="Ещё">\r\n';
+        });
+        destinationOptionsHTML += '</optgroup>\r\n';
+        this.p.innerHTML = destinationOptionsHTML;
+    }.bind(handler.destination.field);
+    // Инициализация интерфейса места назначения:
+    handler.destination.init = function() {
+        this.field.init();
+        this.getValueIndex = function() {
+            return parseInt(this.field.p.value, 10);
+        }.bind(this);
+        this.getData = function() {
+            return data.destination.LIST[this.getValueIndex()];
+        }.bind(this);
+    }.bind(handler.destination);
+    handler.destination.init();
 
-    var pProductionInfo = d.getElementById('productionInfo');
-    var pProductionInfo_img = pProductionInfo.children[0];
-    var pProductionInfo_caption = pProductionInfo.children[1].children[0];
-    var pProductionInfo_price   = pProductionInfo.children[1].children[1];
-    pProduction.addEventListener('change', function(event) {
-        var dataProduction = PRODUCTION[parseInt(this.value, 10)];
-        pProductionInfo_img.setAttribute('src', PRODUCTION_IMAGE_PREFIX_PATH + dataProduction.image);
-        pProductionInfo_img.setAttribute('alt', dataProduction.caption);
-        pProductionInfo_caption.setAttribute('title', dataProduction.caption);
-        pProductionInfo_caption.innerText = dataProduction.caption;
-        var price = !_is('Object', dataProduction.price)
-            ? dataProduction.price + PRODUCTION_PRICE_POSTFIX
-            : dataProduction.price.info();
-        pProductionInfo_price.innerText = price;
-    });
+    // ### Итог ###
+    handler.result = {
+        p: d.getElementById('result'),
+        visible: false,
+    };
+    handler.result.show = function() {
+        if (this.visible) return;
+        this.visible = true;
+        this.p.style.display = '';
+    }.bind(handler.result);
+    handler.result.getRowHTMLCost = function(caption, cost) {
+        return '<p>' + caption + ': ' + cost + ' ₽</p>';
+    }.bind(handler.result);
 
+    // ### Форма ###
+    handler.form = {
+        p: d.forms.deliveryCalculator,
+    };
+    handler.form.init = function() {
+        this.p.addEventListener('submit', function(event) {
+            event.preventDefault();
+            var weight = handler.weight.getValue();
+            var price = handler.production.getData.priceValue(weight);
+            var dataDestination = handler.destination.getData();
 
-    var pWeight = d.getElementById('weight');
-
-
-    var pPlace = d.getElementById('place');
-    var placeOptionsHTML = '';
-    PLACE.forEach(function(place, i, array) {
-        placeOptionsHTML += '<option value="' + i + '">' + place.caption + '</option>\r\n';
-        if (i === 3) placeOptionsHTML += '<optgroup label="Ещё">\r\n';
-    });
-    placeOptionsHTML += '</optgroup>\r\n';
-    pPlace.innerHTML = placeOptionsHTML;
-
-
-    var pResult = d.getElementById('result');
-
-    var pDeliveryCalculator = d.forms.deliveryCalculator;
-    pDeliveryCalculator.addEventListener('submit', function(event) {
-        event.preventDefault();
-        var price = PRODUCTION[parseInt(pProduction.value, 10)].price;
-        var weight = parseInt(pWeight.value, 10);
-        price = !_is('Object', price)
-            ? price
-            : price.value(weight);
-
-        var dataPlace = PLACE[pPlace.value];
-
-        var costPerKM;
-        var countTransport = 1;
-        if (dataPlace.distance <= 600) {
-            if (weight <= 1000)
-                costPerKM = dataPlace.costPerKM.t1 || dataPlace.costPerKM.t5 || dataPlace.costPerKM.t20;
-            else if (weight <= 5000)
-                costPerKM = dataPlace.costPerKM.t5 || dataPlace.costPerKM.t20;
-            else if (weight <= 20000)
-                costPerKM = dataPlace.costPerKM.t20;
-            else {
-                costPerKM = dataPlace.costPerKM.t20;
+            var costPerKM;
+            var countTransport = 1;
+            if (dataDestination.distance <= 600) {
+                if (weight <= 1000)
+                    costPerKM = dataDestination.costPerKM.t1 || dataDestination.costPerKM.t5 || dataDestination.costPerKM.t20;
+                else if (weight <= 5000)
+                    costPerKM = dataDestination.costPerKM.t5 || dataDestination.costPerKM.t20;
+                else if (weight <= 20000)
+                    costPerKM = dataDestination.costPerKM.t20;
+                else {
+                    costPerKM = dataDestination.costPerKM.t20;
+                    countTransport = Math.ceil(weight / 20000);
+                }
+            } else {
+                costPerKM = dataDestination.costPerKM.t20;
                 countTransport = Math.ceil(weight / 20000);
             }
-        } else {
-            costPerKM = dataPlace.costPerKM.t20;
-            countTransport = Math.ceil(weight / 20000);
-        }
 
-        var s1 = (price * weight).toFixed(2);
-        var s2 = (countTransport * dataPlace.distance * 2 * costPerKM).toFixed(2);
+            var s1 = (price * weight).toFixed(2);
+            var s2 = (countTransport * dataDestination.distance * 2 * costPerKM).toFixed(2);
 
-        pResult.style.display = '';
-        pResult.innerHTML =
-        '<p>Товар: ' + s1 + ' ₽</p>\r\n' +
-        '<p>Перевозка: ' + s2 + ' ₽</p>\r\n' +
-        '<p>Стоимость: ' + (s1 * 1 + s2 * 1).toFixed(2) + ' ₽</p>';
-        console.log(
-            'Товар: ' + s1 + ' ₽ (' + price + ' * ' + weight + ')\r\n' +
-            'Перевозка: ' + s2 + ' ₽ (' + countTransport + ' * ' + dataPlace.distance + ' * 2 * ' + costPerKM + ')\r\n' +
-            'Стоимость: ' + (s1 * 1 + s2 * 1).toFixed(2) + ' ₽'
-        );
-    });
+            handler.result.show();
+            handler.result.p.innerHTML =
+                handler.result.getRowHTMLCost('Товар', s1) + '\n' +
+                handler.result.getRowHTMLCost('Перевозка', s2) + '\n' +
+                handler.result.getRowHTMLCost('Стоимость', (s1 * 1 + s2 * 1).toFixed(2));
+            console.log(
+                'Товар: ' + s1 + ' ₽ (' + price + ' * ' + weight + ')\r\n' +
+                'Перевозка: ' + s2 + ' ₽ (' + countTransport + ' * ' + dataDestination.distance + ' * 2 * ' + costPerKM + ')\r\n' +
+                'Стоимость: ' + (s1 * 1 + s2 * 1).toFixed(2) + ' ₽'
+            );
+        });
+    }.bind(handler.form);
+    handler.form.init();
 })(document);
