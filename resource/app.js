@@ -232,8 +232,9 @@
     handler.result.show = function() {
         this.pResultBox.style.display = '';
     }.bind(handler.result);
-    handler.result.getRowHTMLCost = function(caption, cost) {
-        return '<p>' + caption + ': ' + cost + ' ₽</p>';
+    handler.result.getRowHTMLCost = function(caption, cost, inTotal) {
+        var className = 'calc-UI__check-row-cost' + (!inTotal ? '' : ' calc-UI__check-row-cost--in-total');
+        return '<p class="' + className + '"><span>' + caption + ': </span><span>' + cost + ' ₽</span></p>';
     }.bind(handler.result);
 
     // ### Форма ###
@@ -271,11 +272,11 @@
             handler.result.p.innerHTML =
                 handler.result.getRowHTMLCost('Товар', s1) + '\n' +
                 handler.result.getRowHTMLCost('Перевозка', s2) + '\n' +
-                handler.result.getRowHTMLCost('Стоимость', (s1 * 1 + s2 * 1).toFixed(2));
+                handler.result.getRowHTMLCost('Итого', (s1 * 1 + s2 * 1).toFixed(2), true);
             console.log(
                 'Товар: ' + s1 + ' ₽ (' + price + ' * ' + weight + ')\r\n' +
                 'Перевозка: ' + s2 + ' ₽ (' + countTransport + ' * ' + dataDestination.distance + ' * 2 * ' + costPerKM + ')\r\n' +
-                'Стоимость: ' + (s1 * 1 + s2 * 1).toFixed(2) + ' ₽'
+                'Итого: ' + (s1 * 1 + s2 * 1).toFixed(2) + ' ₽'
             );
         });
         var _onceShowResult = function() {
