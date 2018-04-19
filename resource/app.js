@@ -227,12 +227,10 @@
     // ### Итог ###
     handler.result = {
         p: d.getElementById('result'),
-        visible: false,
+        pResultBox: d.getElementById('resultBox'),
     };
     handler.result.show = function() {
-        if (this.visible) return;
-        this.visible = true;
-        this.p.style.display = '';
+        this.pResultBox.style.display = '';
     }.bind(handler.result);
     handler.result.getRowHTMLCost = function(caption, cost) {
         return '<p>' + caption + ': ' + cost + ' ₽</p>';
@@ -270,7 +268,6 @@
             var s1 = (price * weight).toFixed(2);
             var s2 = (countTransport * dataDestination.distance * 2 * costPerKM).toFixed(2);
 
-            handler.result.show();
             handler.result.p.innerHTML =
                 handler.result.getRowHTMLCost('Товар', s1) + '\n' +
                 handler.result.getRowHTMLCost('Перевозка', s2) + '\n' +
@@ -281,6 +278,11 @@
                 'Стоимость: ' + (s1 * 1 + s2 * 1).toFixed(2) + ' ₽'
             );
         });
+        var _onceShowResult = function() {
+            handler.result.show();
+            this.p.removeEventListener('submit', _onceShowResult);
+        }.bind(this);
+        this.p.addEventListener('submit', _onceShowResult);
     }.bind(handler.form);
     handler.form.init();
 })(document);
