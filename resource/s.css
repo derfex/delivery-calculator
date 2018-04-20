@@ -6,14 +6,14 @@ body{margin:0}
 .calc-flexbox__FW--wrap{flex-wrap:wrap}
 .calc-ellipsis{text-overflow:ellipsis;white-space:nowrap;overflow:hidden}
 .calc-wrapper{
-    min-width:28em;
+    margin:auto;
+    width:calc(100% - 2em);
+    min-width:26em;
     max-width:94em;
     padding:1em;
     background:#fff;
 }
-.calc-wrapper:before,.calc-wrapper:after{content:'';display:table}
-.calc-wrapper:after{clear:both}
-h1{color:#5e731e}
+.calc-header{color:#5e731e}
 .calc-UI__block{width:45em}
 
 .calc-UI__label,

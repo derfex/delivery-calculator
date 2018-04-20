@@ -7,10 +7,13 @@
     <link rel="stylesheet" href="resource/s.css">
 </head>
 <body>
+<div class="calc-flexbox">
     <form name="deliveryCalculator" class="calc-wrapper">
-        <h1>Калькулятор доставки</h1>
         <div class="calc-flexbox calc-flexbox__JC--space-between calc-flexbox__FW--wrap">
             <div class="calc-UI__block">
+                <div class="calc-UI__row">
+                    <h1 class="calc-header">Калькулятор доставки</h1>
+                </div>
                 <div class="calc-UI__row">
                     <label class="calc-UI__label" for="production">Продукция</label>
                     <select id="production" name="production" class="calc-UI__field">
@@ -22,7 +25,7 @@
                     </figure>
                 </div>
                 <div class="calc-UI__row">
-                    <label class="calc-UI__label" for="weight">Масса, кг</label>
+                    <label class="calc-UI__label" for="weight">Масса, кг.</label>
                     <input class="calc-UI__field calc-UI__field--input" type="number"
                         id="weight" name="weight" min="0" max="1000000" step="1" value="100"
                     />
@@ -46,8 +49,9 @@
             </div>
         </div>
     </form>
-    <div>
-        <script src="resource/app.js"></script>
-    </div>
+</div>
+<div>
+    <script src="resource/app.js"></script>
+</div>
 </body>
 </html>
