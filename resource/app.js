@@ -198,12 +198,12 @@
 
     // ### Места назначения ###
     handler.destination = {
-        field: {
-            p: d.getElementById('destination'),
-        }
+        select: {
+            p: d.getElementById('destinationSelect'),
+        },
     };
-    // Инициализация поля выбора:
-    handler.destination.field.init = function() {
+    // Инициализация поля выбора места назначения:
+    handler.destination.select.init = function() {
         var destinationOptionsHTML = '';
         data.destination.LIST.forEach(function(destination, i) {
             destinationOptionsHTML += '<option value="' + i + '">' + destination.caption + '</option>\r\n';
@@ -211,12 +211,12 @@
         });
         destinationOptionsHTML += '</optgroup>\r\n';
         this.p.innerHTML = destinationOptionsHTML;
-    }.bind(handler.destination.field);
+    }.bind(handler.destination.select);
     // Инициализация интерфейса места назначения:
     handler.destination.init = function() {
-        this.field.init();
+        this.select.init();
         this.getValueIndex = function() {
-            return parseInt(this.field.p.value, 10);
+            return parseInt(this.select.p.value, 10);
         }.bind(this);
         this.getData = function() {
             return data.destination.LIST[this.getValueIndex()];
