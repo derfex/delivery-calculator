@@ -15,6 +15,7 @@ body{margin:0}
 }
 .calc-header{color:#5e731e}
 .calc-UI__block{width:45em}
+.calc-UI__margins-absorber{margin: -1em 0}
 
 .calc-UI__label,
 .calc-UI__field{
@@ -49,17 +50,18 @@ body{margin:0}
 .calc-UI__production-caption{flex:1 1 auto}
 .calc-UI__production-price{flex:1 0 10em;text-align:right}
 .calc-UI__submit{
-    border:1px solid #e9b600;border-radius:3px;
-    padding:6px 20px;
-    width:100%;height:40px;
+    font-size:1em;
+    border:.1em solid #e9b600;border-radius:3px;
+    padding:.6em 2em;
+    width:100%;height:4em;
     display:block;
     background:#ffc802;
     transition:background-color 0.4s ease;
     color:#fff;
     font-weight:bold;
     text-align:center;
-    font-size:1.5em;
 }
+.calc-UI__submit-caption{font-size:1.5em}
 .calc-UI__submit:hover{background:#ffd53b}
 .calc-UI__submit:active{background:#ffe06f}
 .calc-UI__row{margin:1em 0}

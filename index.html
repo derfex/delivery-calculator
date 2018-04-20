@@ -11,39 +11,47 @@
     <form name="deliveryCalculator" class="calc-wrapper">
         <div class="calc-flexbox calc-flexbox__JC--space-between calc-flexbox__FW--wrap">
             <div class="calc-UI__block">
-                <div class="calc-UI__row">
-                    <h1 class="calc-header">Калькулятор доставки</h1>
+                <div class="calc-UI__margins-absorber">
+                    <div class="calc-UI__row">
+                        <h1 class="calc-header">Калькулятор доставки</h1>
+                    </div>
+                    <div class="calc-UI__row">
+                        <label class="calc-UI__label" for="production">Продукция</label>
+                        <select id="production" name="production" class="calc-UI__field">
+                            <option value="0">Загрузка данных…</option>
+                        </select>
+                        <figure id="productionInfo" class="calc-UI__figure">
+                            <img class="calc-UI__production-image" src="resource/image/production/450x300/potato-01.jpg" alt="Картофель отборный">
+                            <figcaption class="calc-UI__figcapture calc-flexbox calc-flexbox__JC--space-between"><span class="calc-UI__production-caption calc-ellipsis" title="Картофель отборный">Картофель отборный</span><span class="calc-UI__production-price calc-ellipsis">23.00 ₽ за кг.</span></figcaption>
+                        </figure>
+                    </div>
+                    <div class="calc-UI__row">
+                        <label class="calc-UI__label" for="weight">Масса, кг.</label>
+                        <input class="calc-UI__field calc-UI__field--input" type="number"
+                            id="weight" name="weight" min="0" max="1000000" step="1" value="100"
+                        />
+                    </div>
+                    <div class="calc-UI__row">
+                        <label class="calc-UI__label" for="destinationSelect">Куда</label>
+                        <select id="destinationSelect" name="destinationSelect" class="calc-UI__field">
+                            <option value="0">Загрузка данных…</option>
+                        </select>
+                    </div>
+                    <div class="calc-UI__row">
+                        <button class="calc-UI__submit"><span class="calc-UI__submit-caption">РАССЧИТАТЬ</span></button>
+                    </div>
                 </div>
-                <div class="calc-UI__row">
-                    <label class="calc-UI__label" for="production">Продукция</label>
-                    <select id="production" name="production" class="calc-UI__field">
-                        <option value="0">Загрузка данных…</option>
-                    </select>
-                    <figure id="productionInfo" class="calc-UI__figure">
-                        <img class="calc-UI__production-image" src="resource/image/production/450x300/potato-01.jpg" alt="Картофель отборный">
-                        <figcaption class="calc-UI__figcapture calc-flexbox calc-flexbox__JC--space-between"><span class="calc-UI__production-caption calc-ellipsis" title="Картофель отборный">Картофель отборный</span><span class="calc-UI__production-price calc-ellipsis">23.00 ₽ за кг.</span></figcaption>
-                    </figure>
-                </div>
-                <div class="calc-UI__row">
-                    <label class="calc-UI__label" for="weight">Масса, кг.</label>
-                    <input class="calc-UI__field calc-UI__field--input" type="number"
-                        id="weight" name="weight" min="0" max="1000000" step="1" value="100"
-                    />
-                </div>
-                <div class="calc-UI__row">
-                    <label class="calc-UI__label" for="destinationSelect">Куда</label>
-                    <select id="destinationSelect" name="destinationSelect" class="calc-UI__field">
-                        <option value="0">Загрузка данных…</option>
-                    </select>
-                </div>
-                <button class="calc-UI__submit">РАССЧИТАТЬ</button>
             </div>
             <div class="calc-UI__block">
-                <div id="resultBox" class="calc-UI__result-box" style="display:none">
-                    <div class="calc-UI__slit"></div>
-                    <div class="calc-UI__check">
-                        <h2>Примерная стоимость доставки</h2>
-                        <div id="result"></div>
+                <div class="calc-UI__margins-absorber">
+                    <div class="calc-UI__row">
+                        <div id="resultBox" class="calc-UI__result-box" style="display:none">
+                            <div class="calc-UI__slit"></div>
+                            <div class="calc-UI__check">
+                                <h2>Примерная стоимость доставки</h2>
+                                <div id="result"></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
