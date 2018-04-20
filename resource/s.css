@@ -3,7 +3,6 @@ html,body{height:100%}
 body{margin:0}
 .calc-flexbox{display:flex}
 .calc-flexbox__JC--space-between{justify-content:space-between}
-.calc-flexbox__FW--wrap{flex-wrap:wrap}
 .calc-ellipsis{text-overflow:ellipsis;white-space:nowrap;overflow:hidden}
 .calc-wrapper{
     margin:auto;
@@ -14,7 +13,23 @@ body{margin:0}
     background:#fff;
 }
 .calc-header{color:#5e731e}
-.calc-UI__block{width:45em}
+.calc-UI__block{width:calc(100% - 2em);min-width:26em;max-width:45em}
+@media all and (min-width: 480px){
+    .calc-UI__block{width:calc(50% - 2em);min-width:45em}
+}
+.calc-adjustment{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+@media all and (min-width: 930px){
+    .calc-adjustment{
+        flex-direction:row;
+        align-items:normal;
+        justify-content:space-between;
+
+    }
+}
 .calc-UI__margins-absorber{margin: -1em 0}
 
 .calc-UI__label,
@@ -37,7 +52,7 @@ body{margin:0}
 .calc-UI__figure{
     position:relative;
     margin:1em 0;
-    width:45em;height:30em;
+    width:100%;
 }
 .calc-UI__production-image{width:100%;height:100%}
 .calc-UI__figcapture{
@@ -51,6 +66,7 @@ body{margin:0}
 .calc-UI__production-price{flex:1 0 10em;text-align:right}
 .calc-UI__submit{
     font-size:1em;
+    margin-top:2em;
     border:.1em solid #e9b600;border-radius:3px;
     padding:.6em 2em;
     width:100%;height:4em;
