@@ -17,7 +17,7 @@ h1{color:#5e731e}
 .calc-UI__block{width:45em}
 
 .calc-UI__label,
-.calc-UI__input{
+.calc-UI__field{
     font-size:1.5em;
     display:block;
 }
@@ -25,14 +25,14 @@ h1{color:#5e731e}
     padding:.2em .9em;
     color:#5e731e;
 }
-.calc-UI__input{
+.calc-UI__field{
     border:1px solid #5e731e;
     padding:0 0.5em;
     width:100%;
     height:2.5em;
     font-family:'Roboto', sans-serif;
 }
-input.calc-UI__input{box-sizing:border-box}
+.calc-UI__field--input{box-sizing:border-box}
 .calc-UI__figure{
     position:relative;
     margin:1em 0;
