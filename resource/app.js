@@ -254,6 +254,12 @@
         }.bind(this);
         this.select.p.addEventListener('change', this._setDistance);
         this._setDistance();
+        // Смена режима (технически расчёты остаются прежними, меняется только видимое состояние элементов ввода):
+        this._applyMode = function() {
+            this.distance.p.disabled = !this.switchMode.p.checked;
+        }.bind(this);
+        this.switchMode.p.addEventListener('change', this._applyMode);
+        this._applyMode();
     }.bind(handler.destination);
     handler.destination.init();
 
