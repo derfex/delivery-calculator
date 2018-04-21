@@ -201,6 +201,12 @@
         select: {
             p: d.getElementById('destinationSelect'),
         },
+        distance: {
+            p: d.getElementById('destinationDistance'),
+        },
+        switchMode: {
+            p: d.getElementById('destinationSwitchMode'),
+        },
     };
     // Инициализация поля выбора места назначения:
     handler.destination.select.init = function() {
@@ -211,15 +217,31 @@
         });
         destinationOptionsHTML += '</optgroup>\r\n';
         this.p.innerHTML = destinationOptionsHTML;
-    }.bind(handler.destination.select);
-    // Инициализация интерфейса места назначения:
-    handler.destination.init = function() {
-        this.select.init();
         this.getValueIndex = function() {
-            return parseInt(this.select.p.value, 10);
+            return parseInt(this.p.value, 10);
         }.bind(this);
         this.getData = function() {
             return data.destination.LIST[this.getValueIndex()];
+        }.bind(this);
+        this.getValueDistance = function() {
+            return this.getData().distance;
+        }.bind(this);
+    }.bind(handler.destination.select);
+    // Инициализация поля ввода пользовательского расстояния:
+    handler.destination.distance.init = function() {
+        this.getValue = function() {
+            return parseInt(this.p.value, 10);
+        }.bind(this);
+        this.setValue = function(value) {
+            this.p.value = value;
+        }.bind(this);
+    }.bind(handler.destination.distance);
+    // Инициализация интерфейса места назначения:
+    handler.destination.init = function() {
+        this.select.init();
+        this.distance.init();
+        this.getData = function() {
+            return this.select.getData();
         }.bind(this);
     }.bind(handler.destination);
     handler.destination.init();
