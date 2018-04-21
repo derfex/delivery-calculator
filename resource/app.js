@@ -241,8 +241,19 @@
         this.select.init();
         this.distance.init();
         this.getData = function() {
-            return this.select.getData();
+            return Object.assign({},
+                this.select.getData(),
+                {
+                    distance: this.distance.getValue(),
+                }
+            );
         }.bind(this);
+        // Менять значение distance при смене select:
+        this._setDistance = function() {
+            this.distance.setValue(this.select.getValueDistance());
+        }.bind(this);
+        this.select.p.addEventListener('change', this._setDistance);
+        this._setDistance();
     }.bind(handler.destination);
     handler.destination.init();
 
