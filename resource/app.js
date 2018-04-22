@@ -294,8 +294,14 @@
             optionsHTML += '<option value="' + region.id + '">' + region.caption + '</option>\r\n';
         });
         this.p.innerHTML = optionsHTML;
+        this.getValueID = function() {
+            return parseInt(this.p.value, 10);
+        }.bind(this);
         this.setValueByID = function(id) {
             this.p.value = id;
+        }.bind(this);
+        this.getRegionalPriceByIndex = function(regionalPriceIndex) {
+            return data.regionalPrice.LIST[regionalPriceIndex]['r' + this.getValueID()] || null;
         }.bind(this);
     }.bind(handler.destination.region);
     // Инициализация интерфейса места назначения:
