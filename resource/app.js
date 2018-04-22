@@ -249,6 +249,9 @@
         distance: {
             p: d.getElementById('destinationDistance'),
         },
+        region: {
+            p: d.getElementById('destinationRegion'),
+        },
         switchMode: {
             p: d.getElementById('destinationSwitchMode'),
         },
@@ -271,6 +274,9 @@
         this.getValueDistance = function() {
             return this.getData().distance;
         }.bind(this);
+        this.getValueRegionID = function() {
+            return this.getData().regionID;
+        }.bind(this);
     }.bind(handler.destination.select);
     // Инициализация поля ввода пользовательского расстояния:
     handler.destination.distance.init = function() {
@@ -281,10 +287,22 @@
             this.p.value = value;
         }.bind(this);
     }.bind(handler.destination.distance);
+    // Инициализация поля выбора региона места назначения:
+    handler.destination.region.init = function() {
+        var optionsHTML = '';
+        data.region.LIST.forEach(function(region) {
+            optionsHTML += '<option value="' + region.id + '">' + region.caption + '</option>\r\n';
+        });
+        this.p.innerHTML = optionsHTML;
+        this.setValueByID = function(id) {
+            this.p.value = id;
+        }.bind(this);
+    }.bind(handler.destination.region);
     // Инициализация интерфейса места назначения:
     handler.destination.init = function() {
         this.select.init();
         this.distance.init();
+        this.region.init();
         this.getData = function() {
             return Object.assign({},
                 this.select.getData(),
@@ -294,14 +312,15 @@
             );
         }.bind(this);
         // Менять значение distance при смене select:
-        this._setDistance = function() {
+        this._fillDistanceAndRegion = function() {
             this.distance.setValue(this.select.getValueDistance());
+            this.region.setValueByID(this.select.getValueRegionID());
         }.bind(this);
-        this.select.p.addEventListener('change', this._setDistance);
-        this._setDistance();
+        this.select.p.addEventListener('change', this._fillDistanceAndRegion);
+        this._fillDistanceAndRegion();
         // Смена режима (технически расчёты остаются прежними, меняется только видимое состояние элементов ввода):
         this._applyMode = function() {
-            this.distance.p.disabled = !this.switchMode.p.checked;
+            this.distance.p.disabled = this.region.p.disabled = !this.switchMode.p.checked;
         }.bind(this);
         this.switchMode.p.addEventListener('change', this._applyMode);
         this._applyMode();
