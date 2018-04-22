@@ -333,17 +333,39 @@
     }.bind(handler.destination);
     handler.destination.init();
 
+    // ### Региональная стоимость ###
+    handler.getRegionalPrice = function() {
+        return this.destination.region.getRegionalPriceByIndex(this.production.getData().regionalPriceIndex);
+    }.bind(handler);
+
     // ### Итог ###
     handler.result = {
         p: d.getElementById('result'),
         pResultBox: d.getElementById('resultBox'),
+        CLASS_NAME_CHECK_ROW: 'calc-UI__check-row',
+        CLASS_NAME_CHECK_ROW_IN_TOTAL: 'calc-UI__check-row--in-total',
+        CLASS_NAME_CHECK_BLOCK_REGIONAL_PRICE: 'calc-UI__check-block-regional_price',
     };
     handler.result.show = function() {
         this.pResultBox.style.display = '';
     }.bind(handler.result);
     handler.result.getRowHTMLCost = function(caption, cost, inTotal) {
-        var className = 'calc-UI__check-row-cost' + (!inTotal ? '' : ' calc-UI__check-row-cost--in-total');
-        return '<p class="' + className + '"><span>' + caption + ': </span><span>' + cost + ' ₽</span></p>';
+        var className = this.CLASS_NAME_CHECK_ROW + (!inTotal ? '' : ' ' + this.CLASS_NAME_CHECK_ROW_IN_TOTAL);
+        return '<p class="' + className + '"><span>' + caption + ': </span><span>' + cost + ' ₽</span></p>';
+    }.bind(handler.result);
+    handler.result.getRowHTMLProfit = function(price, regionalPrice) {
+        var profitHTML = '';
+        var needShowRegionalPrice = regionalPrice !== null && regionalPrice > price;
+        if (needShowRegionalPrice) {
+            var profit = (100 - (price / regionalPrice * 100)).toFixed(2);
+            var gksHTML = '(<a href="http://gks.ru" target="_blank" class="calc-UI__link"><abbr title="Федеральная служба государственной статистики">РосСтат</abbr></a>)';
+            profitHTML =
+               '<div class="' + this.CLASS_NAME_CHECK_BLOCK_REGIONAL_PRICE + '">\n' +
+                   this.getRowHTMLCost('Региональная стоимость за кг. ' + gksHTML, regionalPrice) + '\n' +
+                   '<p class="' + this.CLASS_NAME_CHECK_ROW + '"><span>Выгода: </span><span>' + profit + '%</span></p>\n' +
+               '</div>';
+        }
+        return profitHTML;
     }.bind(handler.result);
 
     // ### Форма ###
@@ -377,16 +399,29 @@
 
             var s1 = (price * weight).toFixed(2);
             var s2 = (countTransport * dataDestination.distance * 2 * costPerKM).toFixed(2);
+            var inTotal = (s1 * 1 + s2 * 1).toFixed(2);
+            var regionalPrice = handler.getRegionalPrice();
 
             handler.result.p.innerHTML =
                 handler.result.getRowHTMLCost('Товар', s1) + '\n' +
                 handler.result.getRowHTMLCost('Перевозка', s2) + '\n' +
-                handler.result.getRowHTMLCost('Итого', (s1 * 1 + s2 * 1).toFixed(2), true);
-            console.log(
-                'Товар: ' + s1 + ' ₽ (' + price + ' * ' + weight + ')\r\n' +
-                'Перевозка: ' + s2 + ' ₽ (' + countTransport + ' * ' + dataDestination.distance + ' * 2 * ' + costPerKM + ')\r\n' +
-                'Итого: ' + (s1 * 1 + s2 * 1).toFixed(2) + ' ₽'
-            );
+                handler.result.getRowHTMLCost('Итого', inTotal, true) + '\n' +
+                handler.result.getRowHTMLProfit(price, regionalPrice);
+            (function developmentInfo() {
+                var extraInfoConsole = regionalPrice !== null
+                    ? 'Региональная стоимость за кг.: ' + regionalPrice + ' ₽\r\n' +
+                    'Выгода:                      ' + (100 - (price / regionalPrice * 100)).toFixed(2) + '% (100 - (' + price + ' / ' + regionalPrice + ' * 100))\r\n' +
+                    'Выгода с учётом перевозки: ' + (100 - ((inTotal / weight) / regionalPrice * 100)).toFixed(2) + '% (100 - ((' + inTotal + ' / ' + weight + ') / ' + regionalPrice + ' * 100))\r\n'
+                    : 'Региональная стоимость за кг.: нет данных.';
+                console.group(handler.production.getData().caption);
+                console.log(
+                    'Товар: ' + s1 + ' ₽ (' + price + ' * ' + weight + ')\r\n' +
+                    'Перевозка: ' + s2 + ' ₽ (' + countTransport + ' * ' + dataDestination.distance + ' * 2 * ' + costPerKM + ')\r\n' +
+                    'Итого: ' + inTotal + ' ₽\r\n' +
+                    extraInfoConsole
+                );
+                console.groupEnd();
+            })();
         });
         var _onceShowResult = function() {
             handler.result.show();

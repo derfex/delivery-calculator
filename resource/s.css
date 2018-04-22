@@ -27,11 +27,11 @@ body{margin:0}
         flex-direction:row;
         align-items:normal;
         justify-content:space-between;
-
     }
 }
 .calc-UI__margins-absorber{margin: -1em 0}
 
+.calc-UI__link{color:#5e731e}
 .calc-UI__label,
 .calc-UI__field{
     font-size:1.5em;
@@ -111,8 +111,9 @@ body{margin:0}
     background:#fff;
 }
 #result{font-size:1.5em}
-.calc-UI__check-row-cost{
+.calc-UI__check-row{
     display:flex;justify-content:space-between;
     border-bottom:1px dotted #ccc;
 }
-.calc-UI__check-row-cost--in-total{font-weight:700}
+.calc-UI__check-row--in-total{font-weight:700}
+.calc-UI__check-block-regional_price{border-top:2px solid #ddd}
