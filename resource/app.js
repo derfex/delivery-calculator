@@ -301,7 +301,9 @@
             this.p.value = id;
         }.bind(this);
         this.getRegionalPriceByIndex = function(regionalPriceIndex) {
-            return data.regionalPrice.LIST[regionalPriceIndex]['r' + this.getValueID()] || null;
+            var dataRegionalPrice = data.regionalPrice.LIST[regionalPriceIndex];
+            if (!dataRegionalPrice) return null;
+            return dataRegionalPrice['r' + this.getValueID()] || null;
         }.bind(this);
     }.bind(handler.destination.region);
     // Инициализация интерфейса места назначения:
