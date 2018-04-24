@@ -205,7 +205,7 @@
             return parseInt(this.field.p.value, 10);
         }.bind(this);
         this.getData = function() {
-            var dataProduction = data.production.LIST[this.getValueIndex()];
+            var dataProduction = Object.assign({}, data.production.LIST[this.getValueIndex()]);
             dataProduction.image = data.production.IMAGE_PREFIX_PATH + dataProduction.image;
             return dataProduction;
         }.bind(this);
