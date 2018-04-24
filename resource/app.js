@@ -25,23 +25,24 @@
     }.bind(data.production);
     // Список товаров:
     data.production.LIST = [
-        { caption: 'Картофель отборный'                         ,  image: 'potato-01.jpg'            ,  regionalPriceIndex:    0,  price: 23.00 },
-        { caption: 'Картофель свежий'                           ,  image: 'potato-02.jpg'            ,  regionalPriceIndex:    0,  price: 13.00 },
-        { caption: 'Картофель мелкая фракция'                   ,  image: 'potato-03.jpg'            ,  regionalPriceIndex:    0,  price: 10.50 },
-        { caption: 'Картофель семенной «Коломбо»'               ,  image: 'potato-04.jpg'            ,  regionalPriceIndex:    0,  price: 24.00 },
-        { caption: 'Картофель семенной «Ред Скарлет»'           ,  image: 'potato-05.jpg'            ,  regionalPriceIndex:    0,  price: 21.00 },
-        { caption: 'Картофель семенной «Гала»'                  ,  image: 'potato-06.jpg'            ,  regionalPriceIndex:    0,  price: 12.00 },
-        { caption: 'Картофель семенной «Рамос»'                 ,  image: 'potato-07.jpg'            ,  regionalPriceIndex:    0,  price: 20.00 },
-        { caption: 'Морковь (эконом)'                           ,  image: 'carrot-01.jpg'            ,  regionalPriceIndex:    1,  price:  5.20 },
+        { caption: 'Картофель отборный'                         ,  image: 'potato-01.jpg'            ,  regionalPriceIndex:    0,  price: 27.00 },
+        { caption: 'Картофель свежий'                           ,  image: 'potato-02.jpg'            ,  regionalPriceIndex:    0,  price: 17.90 },
+        { caption: 'Картофель мелкая фракция'                   ,  image: 'potato-03.jpg'            ,  regionalPriceIndex:    0,  price: 10.00 },
+        { caption: 'Картофель семенной «Коломбо»'               ,  image: 'potato-04.jpg'            ,  regionalPriceIndex:    0,  price: 28.00 },
+        { caption: 'Картофель семенной «Ред Скарлет»'           ,  image: 'potato-05.jpg'            ,  regionalPriceIndex:    0,  price: 25.00 },
+        { caption: 'Картофель семенной «Гала»'                  ,  image: 'potato-06.jpg'            ,  regionalPriceIndex:    0,  price: 18.00 },
+        { caption: 'Картофель семенной «Рамос»'                 ,  image: 'potato-07.jpg'            ,  regionalPriceIndex:    0,  price: 22.00 },
+        { caption: 'Морковь'                                    ,  image: 'carrot-01.jpg'            ,  regionalPriceIndex:    1,  price: 32.00 },
         { caption: 'Свекла отборная'                            ,  image: 'beet-01.jpg'              ,  regionalPriceIndex:    2,  price: 14.50 },
         { caption: 'Свекла'                                     ,  image: 'beet-02.jpg'              ,  regionalPriceIndex:    2,  price:  9.50 },
         { caption: 'Свекла 35+'                                 ,  image: 'beet-03.jpg'              ,  regionalPriceIndex:    2,  price:  5.00 },
         { caption: 'Пшеница'                                    ,  image: 'wheat-01.jpg'             ,  regionalPriceIndex: null,  price: 10.00 },
         { caption: 'Овёс'                                       ,  image: 'oat-01.jpg'               ,  regionalPriceIndex: null,  price: data.production._getOatPrice },
-        { caption: 'Овсяно-пшеничная смесь'                     ,  image: 'oat-wheat-mixture-01.jpg' ,  regionalPriceIndex: null,  price: 11.00 },
+        { caption: 'Овсяно-пшеничная смесь (под заказ)'         ,  image: 'oat-wheat-mixture-01.jpg' ,  regionalPriceIndex: null,  price: 10.00 },
+        { caption: 'Капуста'                                    ,  image: 'cabbage-01.jpg'           ,  regionalPriceIndex: null,  price: 23.00 },
         { caption: 'Горчица'                                    ,  image: 'mustard-01.jpg'           ,  regionalPriceIndex: null,  price: 40.00 },
-        { caption: 'Кормовая смесь (картофель, свекла)'         ,  image: 'fodder-mixture-01.jpg'    ,  regionalPriceIndex: null,  price:  3.00 },
-        { caption: 'Кормовая смесь в сетке (картофель, свекла)' ,  image: 'fodder-mixture-01.jpg'    ,  regionalPriceIndex: null,  price:  5.00 },
+        { caption: 'Картофель, свекла (валом)'                  ,  image: 'fodder-mixture-01.jpg'    ,  regionalPriceIndex: null,  price:  3.00 },
+        { caption: 'Картофель, свекла (кормовая смесь в сетке)' ,  image: 'fodder-mixture-01.jpg'    ,  regionalPriceIndex: null,  price:  5.00 },
         { caption: 'Кормовая смесь (морковь)'                   ,  image: 'fodder-mixture-02.jpg'    ,  regionalPriceIndex: null,  price:  3.50 }
     ];
 
